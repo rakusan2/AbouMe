@@ -1,0 +1,41 @@
+{
+  "name": "about_me",
+  "version": "1.0.0",
+  "description": "Website about me",
+  "main": "index.js",
+  "dependencies": {
+    "express": "^4.14.0",
+    "gulp": "^3.9.1",
+    "gulp-changed": "^1.3.2",
+    "gulp-livereload": "^3.8.1",
+    "gulp-pleeease": "^2.0.2",
+    "gulp-pug": "^3.0.4",
+    "gulp-sass": "^2.3.2",
+    "gulp-typescript": "^2.13.6"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-changed": "^1.3.2",
+    "gulp-livereload": "^3.8.1",
+    "gulp-pleeease": "^2.0.2",
+    "gulp-pug": "^3.0.4",
+    "gulp-sass": "^2.3.2",
+    "gulp-typescript": "^2.13.6"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rakusan2/AbouMe.git"
+  },
+  "keywords": [
+    "website"
+  ],
+  "author": "Tomas Rakusan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rakusan2/AbouMe/issues"
+  },
+  "homepage": "https://github.com/rakusan2/AbouMe#readme"
+}
