@@ -1,5 +1,16 @@
 html
     head
         title About Tomas Rakusan
+        link(rel='stylesheet' href='css/normalize.css')
+        link(rel='stylesheet' href='css/main.css')
     body
-        h1 Hello
+        header
+            h1 Tomas Rakusan
+        main
+            .skills
+                #input(contenteditable placeholder="Please Search though my skils")
+                #sbody
+                    div.error Please wait my skills are loading
+        if autoReloadS
+            script!=autoReloadS
+        script(src="js/main.js")

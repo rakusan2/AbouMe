@@ -11,6 +11,11 @@ const pugParams = {
     doctype: 'html',
     pretty: true
 };
+const pugTestParams = Object.assign({}, pugParams, {
+    locals: {
+        autoReloadS: "document.write('<script src=\"http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1\"></' + 'script>')"
+    }
+});
 const sassOptions = {
     outputStyle: 'expanded'
 };
@@ -36,13 +41,21 @@ gulp.task('html', () => {
         .pipe(gulp.dest('docs'))
         .pipe(reload());
 });
+gulp.task('testhtml', () => {
+    gulp.src('src/pug/*.pug')
+        .pipe(changed('docs'))
+        .pipe(pug(pugTestParams))
+        .on('error', onError)
+        .pipe(gulp.dest('docs'))
+        .pipe(reload());
+});
 gulp.task('css', () => {
     gulp.src('src/scss/*.scss')
-        .pipe(changed('docs/styles'))
+        .pipe(changed('docs/css'))
         .pipe(sass(sassOptions))
         .on('error', onError)
         .pipe(pleeease(pleeeaseOptions))
-        .pipe(gulp.dest('docs/styles'))
+        .pipe(gulp.dest('docs/css'))
         .pipe(reload());
 });
 gulp.task('js', () => {
@@ -52,10 +65,17 @@ gulp.task('js', () => {
         .pipe(gulp.dest('docs/js'))
         .pipe(reload());
 });
-gulp.task('watch', () => {
+gulp.task('watch', ['js', 'css', 'html'], () => {
     reload.listen(reloadOptions);
     gulp.watch('src/pug/*.pug', ['html']);
     gulp.watch('src/scss/*.scss', ['css']);
     gulp.watch('src/ts/*.ts', ['js']);
 });
-gulp.task('default', ['js', 'css', 'html', 'watch']);
+gulp.task('testWatch', () => {
+    reload.listen(reloadOptions);
+    gulp.watch('src/pug/*.pug', ['testhtml']);
+    gulp.watch('src/scss/*.scss', ['css']);
+    gulp.watch('src/ts/*.ts', ['js']);
+});
+gulp.task('default', ['js', 'css', 'html']);
+gulp.task('testComp', ['js', 'css', 'testhtml', 'testWatch']);
