@@ -1,6 +1,6 @@
 var activeKey = 'active';
 var skils = [
-    { name: 'Basic Vim' },
+    { name: 'Basic Vim', description: 'Started using vim in 2015 and it is currently my go to text editor in linux' },
     { name: 'HTML through Pug' },
     { name: 'CSS through SCSS' },
     { name: 'Typescript' },
@@ -20,11 +20,17 @@ window.onload = function (ev) {
     input.oninput = search;
 };
 function skilToCard(s) {
-    var frag = document.createElement('div'), name = document.createElement('div');
+    var frag = document.createElement('div'), name = document.createElement('div'), desc = document.createElement('div');
     name.classList.add('name');
     name.textContent = s.name;
     frag.appendChild(name);
+    if (s.description) {
+        desc.classList.add('desc');
+        desc.textContent = s.description;
+        frag.appendChild(desc);
+    }
     frag.classList.add(activeKey);
+    frag.tabIndex = 1;
     return frag;
 }
 function checkChangeClass(div, active) {
