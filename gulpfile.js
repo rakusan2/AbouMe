@@ -32,24 +32,16 @@ const reloadOptions = {
 function onError(err) {
     console.log(err.message);
 }
-let tsProject = ts.createProject(__dirname + '/tsconfig.json', tsOptions);
-gulp.task('html', () => {
+let tsProject = ts.createProject(__dirname + '/tsconfig.json', tsOptions), isListening = false;
+function html(params) {
     gulp.src('src/pug/*.pug')
         .pipe(changed('docs'))
-        .pipe(pug(pugParams))
+        .pipe(pug(params))
         .on('error', onError)
         .pipe(gulp.dest('docs'))
         .pipe(reload());
-});
-gulp.task('testhtml', () => {
-    gulp.src('src/pug/*.pug')
-        .pipe(changed('docs'))
-        .pipe(pug(pugTestParams))
-        .on('error', onError)
-        .pipe(gulp.dest('docs'))
-        .pipe(reload());
-});
-gulp.task('css', () => {
+}
+function css() {
     gulp.src('src/scss/*.scss')
         .pipe(changed('docs/css'))
         .pipe(sass(sassOptions))
@@ -57,25 +49,40 @@ gulp.task('css', () => {
         .pipe(pleeease(pleeeaseOptions))
         .pipe(gulp.dest('docs/css'))
         .pipe(reload());
-});
-gulp.task('js', () => {
+}
+function js() {
     gulp.src(['src/ts/*.ts', 'typings/globals/**/*.ts', 'typings/modules/**/*.ts'])
         .pipe(ts(tsProject))
         .on('error', onError).js
         .pipe(gulp.dest('docs/js'))
         .pipe(reload());
-});
-gulp.task('watch', ['js', 'css', 'html'], () => {
+}
+function listen() {
+    if (isListening)
+        return;
     reload.listen(reloadOptions);
+}
+function watch() {
+    listen();
     gulp.watch('src/pug/*.pug', ['html']);
     gulp.watch('src/scss/*.scss', ['css']);
     gulp.watch('src/ts/*.ts', ['js']);
-});
-gulp.task('testWatch', () => {
-    reload.listen(reloadOptions);
+}
+function testWatch() {
+    listen();
     gulp.watch('src/pug/*.pug', ['testhtml']);
     gulp.watch('src/scss/*.scss', ['css']);
     gulp.watch('src/ts/*.ts', ['js']);
+}
+gulp.task('html', () => {
+    html(pugParams);
 });
+gulp.task('testhtml', () => {
+    html(pugTestParams);
+});
+gulp.task('css', css);
+gulp.task('js', js);
+gulp.task('watch', ['js', 'css', 'html'], watch);
+gulp.task('testWatch', testWatch);
 gulp.task('default', ['js', 'css', 'html']);
 gulp.task('testComp', ['js', 'css', 'testhtml', 'testWatch']);

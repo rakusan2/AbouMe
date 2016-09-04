@@ -17,8 +17,8 @@ header h1 {
 
 main {
   width: 80%;
-  margin: 0 auto;
-  border: 1px solid black;
+  margin: 10px auto 0;
+  border: 1px solid #CCC;
 }
 
 .skills #input {
@@ -31,14 +31,62 @@ main {
   color: grey;
 }
 
-.skills #input, .skills #sbody div {
+.skills #input, .skills #sbody > div {
+  overflow: hidden;
+  box-sizing: border-box;
+  position: relative;
   width: 60%;
   border: 1px solid grey;
   margin: 0 auto;
   padding: 4px 10px;
+  -webkit-transition: padding 0.4s linear,height 0.4s linear, -webkit-transform 0.4s linear;
+  transition: padding 0.4s linear,height 0.4s linear, -webkit-transform 0.4s linear;
+  transition: padding 0.4s linear,height 0.4s linear, transform 0.4s linear;
+  transition: padding 0.4s linear,height 0.4s linear, transform 0.4s linear,-webkit-transform 0.4s linear;
 }
 
-.skills #sbody div:last-child {
+.skills #sbody > div:last-child {
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
+}
+
+.skills #sbody > div:not(.active) {
+  height: 2px;
+  padding: 0 10px;
+}
+
+@-webkit-keyframes moveout {
+  0% {
+    -webkit-transform: translate(0);
+            transform: translate(0);
+  }
+  50% {
+    -webkit-transform: translate(100%, 0);
+            transform: translate(100%, 0);
+    padding: 4px 10px;
+  }
+  98% {
+    padding: 0;
+  }
+  100% {
+    border: 0;
+  }
+}
+
+@keyframes moveout {
+  0% {
+    -webkit-transform: translate(0);
+            transform: translate(0);
+  }
+  50% {
+    -webkit-transform: translate(100%, 0);
+            transform: translate(100%, 0);
+    padding: 4px 10px;
+  }
+  98% {
+    padding: 0;
+  }
+  100% {
+    border: 0;
+  }
 }

@@ -1,3 +1,5 @@
 typings/globals/
 typings/modules/
 node_modules/
+typings/index.d.ts
+auth.json

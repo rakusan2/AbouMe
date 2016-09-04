@@ -16,8 +16,8 @@ header{
 }
 main{
     width:80%;
-    margin:0 auto;
-    border:1px solid black;
+    margin:10px auto 0;
+    border:1px solid #CCC;
 }
 .skills{
     #input{
@@ -28,14 +28,30 @@ main{
         content:attr(placeholder);
         color:grey;
     }
-    #input, #sbody div{
+    #input, #sbody > div{
+        overflow: hidden;
+        box-sizing: border-box;
+        position:relative;
         width:60%;
         border:1px solid grey;
         margin:0 auto;
         padding:4px 10px;
+        transition: padding 0.4s linear,height 0.4s linear, transform 0.4s linear;
     }
-    #sbody div:last-child{
+    #sbody > div:last-child{
         border-bottom-left-radius: $headborderR;
         border-bottom-right-radius: $headborderR;
     }
+    #sbody > div:not(.active){
+        //transform:scaleY(0);
+        height: 2px;
+        padding:0 10px;
+        //border-width: 0;
+    }
+}
+@keyframes moveout{
+    0% {transform:translate(0)}
+    50% {transform:translate(100%,0);padding:4px 10px}
+    98% {padding:0}
+    100%{border:0}
 }
