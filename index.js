@@ -14,3 +14,14 @@ app.listen(8000, () => {
         pushIP.pushServerIP(ip[i]);
     }
 });
+process.stdin.resume();
+function noteDown(reason) {
+    return () => {
+        console.log('Going Down');
+        pushIP.pushServerDown(reason, reason === 'exit' ? undefined : process.exit);
+    };
+}
+process.on('exit', noteDown('exit'));
+process.on('SIGINT', noteDown('SIGINT'));
+process.on('SIGQUIT', noteDown('SIGQUIT'));
+process.on('uncaughtException', noteDown('Exception'));
