@@ -42,7 +42,7 @@ main{
         border-bottom-left-radius: $headborderR;
         border-bottom-right-radius: $headborderR;
     }
-    #sbody > div:not(.active){
+    #sbody > div.hide{
         //transform:scaleY(0);
         height: 2px;
         padding:0 10px;
@@ -52,8 +52,9 @@ main{
 		margin-left:8px;
 		height:0px;
 		overflow:hidden;
+        //transition: height 1s ease;
 	}
-	#sbody > div:focus:active .desc{
+	#sbody > div:focus .desc{
 		height:100%;
 	}
 }

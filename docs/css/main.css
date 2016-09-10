@@ -50,7 +50,7 @@ main {
   border-bottom-right-radius: 5px;
 }
 
-.skills #sbody > div:not(.active) {
+.skills #sbody > div.hide {
   height: 2px;
   padding: 0 10px;
 }
@@ -61,7 +61,7 @@ main {
   overflow: hidden;
 }
 
-.skills #sbody > div:focus:active .desc {
+.skills #sbody > div:focus .desc {
   height: 100%;
 }
 
