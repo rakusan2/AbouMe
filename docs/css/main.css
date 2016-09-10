@@ -61,7 +61,19 @@ main {
   overflow: hidden;
 }
 
+.skills #sbody > div .date {
+  margin-left: 16px;
+  height: 0px;
+  overflow: hidden;
+  font-size: 0.8em;
+  color: grey;
+}
+
 .skills #sbody > div:focus .desc {
+  height: 100%;
+}
+
+.skills #sbody > div:focus .date {
   height: 100%;
 }
 

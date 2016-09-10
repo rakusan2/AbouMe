@@ -71,7 +71,8 @@ window.onload = (ev)=>{
 function skilToCard(s:skill):HTMLDivElement{
     let frag = document.createElement('div'),
         name = document.createElement('div'),
-		desc = document.createElement('div');
+		desc = document.createElement('div'),
+        date = document.createElement('div');
     name.classList.add('name');
     name.textContent = s.name;
     frag.appendChild(name);
@@ -80,6 +81,11 @@ function skilToCard(s:skill):HTMLDivElement{
 		desc.textContent = s.description;
 		frag.appendChild(desc);
 	}
+    if(s.date){
+        date.classList.add('date');
+        date.textContent = s.date;
+        frag.appendChild(date);
+    }
 	frag.tabIndex = 1
     frag.onclick = ()=>frag.focus();
     return frag;

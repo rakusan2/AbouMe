@@ -60,7 +60,7 @@ window.onload = function (ev) {
     input.oninput = search;
 };
 function skilToCard(s) {
-    var frag = document.createElement('div'), name = document.createElement('div'), desc = document.createElement('div');
+    var frag = document.createElement('div'), name = document.createElement('div'), desc = document.createElement('div'), date = document.createElement('div');
     name.classList.add('name');
     name.textContent = s.name;
     frag.appendChild(name);
@@ -68,6 +68,11 @@ function skilToCard(s) {
         desc.classList.add('desc');
         desc.textContent = s.description;
         frag.appendChild(desc);
+    }
+    if (s.date) {
+        date.classList.add('date');
+        date.textContent = s.date;
+        frag.appendChild(date);
     }
     frag.tabIndex = 1;
     frag.onclick = function () { return frag.focus(); };

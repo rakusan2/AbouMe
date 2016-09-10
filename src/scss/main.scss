@@ -54,7 +54,18 @@ main{
 		overflow:hidden;
         //transition: height 1s ease;
 	}
+	#sbody > div .date{
+		margin-left:16px;
+		height:0px;
+		overflow:hidden;
+        font-size: 0.8em;
+        color: grey;
+        //transition: height 1s ease;
+	}
 	#sbody > div:focus .desc{
+		height:100%;
+	}
+	#sbody > div:focus .date{
 		height:100%;
 	}
 }
