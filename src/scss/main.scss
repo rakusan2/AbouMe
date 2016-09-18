@@ -1,5 +1,6 @@
 $headborderR:5px;
 $headColor: #999;
+$borerSkill:1px solid grey;
 body{
     margin:0;
 }
@@ -23,17 +24,22 @@ main{
     #input{
         border-top-left-radius: $headborderR;
         border-top-right-radius: $headborderR;
+        border:$borerSkill;
     }
-    div[contenteditable][placeholder]:empty::before{
+    div[contenteditable][placeholder]:empty:before {
         content:attr(placeholder);
         color:grey;
+    }
+    #sbody > div{
+        border-bottom:$borerSkill;
+        border-left:$borerSkill;
+        border-right:$borerSkill;
     }
     #input, #sbody > div{
         overflow: hidden;
         box-sizing: border-box;
         position:relative;
         width:60%;
-        border:1px solid grey;
         margin:0 auto;
         padding:4px 10px;
         transition: padding 0.4s linear,height 0.4s linear, transform 0.4s linear;
@@ -68,10 +74,10 @@ main{
 	#sbody > div:focus .date{
 		height:100%;
 	}
-}
+}/*
 @keyframes moveout{
     0% {transform:translate(0)}
     50% {transform:translate(100%,0);padding:4px 10px}
     98% {padding:0}
     100%{border:0}
-}
+}*/

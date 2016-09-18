@@ -24,6 +24,7 @@ main {
 .skills #input {
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
+  border: 1px solid grey;
 }
 
 .skills div[contenteditable][placeholder]:empty:before {
@@ -31,12 +32,17 @@ main {
   color: grey;
 }
 
+.skills #sbody > div {
+  border-bottom: 1px solid grey;
+  border-left: 1px solid grey;
+  border-right: 1px solid grey;
+}
+
 .skills #input, .skills #sbody > div {
   overflow: hidden;
   box-sizing: border-box;
   position: relative;
   width: 60%;
-  border: 1px solid grey;
   margin: 0 auto;
   padding: 4px 10px;
   -webkit-transition: padding 0.4s linear,height 0.4s linear, -webkit-transform 0.4s linear;
@@ -77,38 +83,10 @@ main {
   height: 100%;
 }
 
-@-webkit-keyframes moveout {
-  0% {
-    -webkit-transform: translate(0);
-            transform: translate(0);
-  }
-  50% {
-    -webkit-transform: translate(100%, 0);
-            transform: translate(100%, 0);
-    padding: 4px 10px;
-  }
-  98% {
-    padding: 0;
-  }
-  100% {
-    border: 0;
-  }
-}
-
-@keyframes moveout {
-  0% {
-    -webkit-transform: translate(0);
-            transform: translate(0);
-  }
-  50% {
-    -webkit-transform: translate(100%, 0);
-            transform: translate(100%, 0);
-    padding: 4px 10px;
-  }
-  98% {
-    padding: 0;
-  }
-  100% {
-    border: 0;
-  }
-}
+/*
+@keyframes moveout{
+    0% {transform:translate(0)}
+    50% {transform:translate(100%,0);padding:4px 10px}
+    98% {padding:0}
+    100%{border:0}
+}*/
