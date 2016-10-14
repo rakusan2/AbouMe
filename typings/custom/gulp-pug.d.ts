@@ -1,9 +1,9 @@
 declare module "gulp-pug" {
-import {options} from 'pug'
+import {Options} from 'pug'
   function gulpPug(params?: gulpPug.Params): NodeJS.ReadWriteStream;
 
   namespace gulpPug{
-    interface Params extends options {
+    interface Params extends Options {
         /*******
         * JADE API OPTIONS
         *******/

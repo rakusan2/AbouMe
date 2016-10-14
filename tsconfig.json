@@ -4,11 +4,13 @@
         "target": "es2015",
         "noImplicitAny": false,
         "sourceMap": false,
-        "pretty":true
+        "pretty":true,
+        "noImplicitReturns": true,
+        "noImplicitThis": true,
+        "noUnusedLocals": true
     },
     "exclude": [
         "node_modules",
-        "typings/custom",
         "src"
     ]
 }

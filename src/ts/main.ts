@@ -1,13 +1,13 @@
-interface skill{
-    name:string,
-    description?:string,
-    date?:string,
-    img?:string,
-    div?:HTMLDivElement
+interface Skill{
+    name:string;
+    description?:string;
+    date?:string;
+    img?:string;
+    div?:HTMLDivElement;
 }
 //const activeKey = 'active';
 const hideKey = 'hide';
-let skils :skill[]= [
+let skils :Skill[]= [
     {
         name:'HTML through Pug',
         description:'I have started using pug to decrease the the repetitive code creation and now I am also using it to add scripts that are only needed during testing',
@@ -53,13 +53,13 @@ let skils :skill[]= [
         description:'First Programming language I have ever learned',
         date:'November of 2011'
     }
-]
-let input:HTMLDivElement
+];
+let input:HTMLDivElement;
 window.onload = (ev)=>{
     let sbody = document.getElementById('sbody'),
         sbodyFrag = document.createDocumentFragment();
     for(let i = 0; i <skils.length;i++){
-        skils[i].div=skilToCard(skils[i])
+        skils[i].div=skilToCard(skils[i]);
        sbodyFrag.appendChild(skils[i].div);
     }
     sbody.innerHTML="";
@@ -67,8 +67,8 @@ window.onload = (ev)=>{
     input = document.getElementById("input")as HTMLDivElement;
     input.oninput = search;
     
-}
-function skilToCard(s:skill):HTMLDivElement{
+};
+function skilToCard(s:Skill):HTMLDivElement{
     let frag = document.createElement('div'),
         name = document.createElement('div'),
 		desc = document.createElement('div'),
@@ -86,7 +86,7 @@ function skilToCard(s:skill):HTMLDivElement{
         date.textContent = s.date;
         frag.appendChild(date);
     }
-	frag.tabIndex = 1
+	frag.tabIndex = 1;
     frag.onclick = ()=>frag.focus();
     return frag;
 }
@@ -101,10 +101,10 @@ function checkChangeClass(div:HTMLDivElement,active:Boolean | string){
         div.classList.add(hideKey);
         div.removeAttribute('tabIndex');
     }
-    console.log({contains:div.classList.contains(hideKey),active})
+    console.log({contains:div.classList.contains(hideKey),active});
 }
 function search(ev:Event){
-    let regSearch = new RegExp(input.textContent,'i'),s:skill;
+    let regSearch = new RegExp(input.textContent,'i'),s:Skill;
     for(let i = 0; i < skils.length;i++){
         s = skils[i];
         checkChangeClass(s.div,s.name.search(regSearch)>= 0 || (s.description && s.description.search(regSearch) >=0));

@@ -3,38 +3,39 @@ import * as sass from 'gulp-sass';
 import * as pug from 'gulp-pug';
 import * as ts from 'gulp-typescript';
 import * as reload from 'gulp-livereload';
-import * as pleeease from 'gulp-pleeease'
-import * as changed from 'gulp-changed'
-import * as ots from 'typescript'
+import * as pleeease from 'gulp-pleeease';
+import * as changed from 'gulp-changed';
+import * as ots from 'typescript';
 
 const pugParams :pug.Params = {
     doctype:'html',
     pretty:true
-}
+};
 const pugTestParams = Object.assign({},pugParams,{
     locals:{
         autoReloadS:"document.write('<script src=\"http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1\"></' + 'script>')"
     }
-} as pug.Params)
-const sassOptions :sass.SassOptions = {
+} as pug.Params);
+const sassOptions :sass.Options = {
     outputStyle:'expanded'
-}
+};
 const pleeeaseOptions :pleeease.Params = {
     minifier:undefined
     
-}
-const tsOptions :ts.Params = {
+};
+const tsOptions :ts.Settings = {
     target:"es5",
     typescript:ots
 
-}
+};
 const reloadOptions :reload.Options= {
     reloadPage:'index.html'
-}
+};
 function onError(err:ErrorEvent){
     console.log(err.message);
-}
+};
 let tsProject = ts.createProject(__dirname + '/tsconfig.json',tsOptions),isListening=false;
+
 function html(params:pug.Params){
     gulp.src('src/pug/*.pug')
         .pipe(changed('docs'))
@@ -60,7 +61,7 @@ function js(){
         .pipe(reload());
 }
 function listen(){
-    if(isListening) return;
+    if(isListening) return; // tslint:disable-line
     reload.listen(reloadOptions);
 }
 function watch(){
