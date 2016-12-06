@@ -1,6 +1,6 @@
+import * as express from 'express';
 import getIp from './displayIP';
 import * as pushIP from './pushIP';
-import * as express from 'express';
 
 let app = express();
 let ip = getIp();

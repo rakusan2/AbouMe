@@ -2,11 +2,7 @@
 const https = require('https');
 const fs = require('fs');
 let auth, options;
-const pushOfline = {
-    type: 'note',
-    title: 'Server DOWN',
-    body: 'Server went ofline'
-}, pushException = {
+const pushException = {
     type: 'note',
     title: 'Server Crashed',
     body: 'Server Crashed'
@@ -36,7 +32,11 @@ function ready() {
 }
 function postToServer(data, callback) {
     let pushreq = https.request(options, (msg) => {
-        msg.on('data', (data) => console.log({ ServerMsg: JSON.parse(data) }));
+        msg.on('data', (data) => {
+            if (typeof data === 'string') {
+                console.log({ ServerMsg: JSON.parse(data) });
+            }
+        });
         if (callback)
             callback();
     })
@@ -51,7 +51,7 @@ function post(data, callback) {
     if (isReady)
         postToServer(data, callback);
     else
-        toPost.push({ data: data, callback: callback });
+        toPost.push({ data, callback });
 }
 function postIP(ip) {
     return {

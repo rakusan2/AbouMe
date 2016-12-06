@@ -1,11 +1,7 @@
 import * as https from 'https'
 import * as fs from 'fs'
 let auth :{key:string}, options : https.RequestOptions
-const pushOfline = {
-            type:'note',
-            title:'Server DOWN',
-            body:'Server went ofline'
-} as pushPost,pushException = {
+const pushException = {
     type:'note',
     title:'Server Crashed',
     body:'Server Crashed'
@@ -41,7 +37,11 @@ function ready(){
 }
 function postToServer(data:pushPost, callback?:Function){
     let pushreq = https.request(options,(msg)=>{
-            msg.on('data',(data)=>console.log({ServerMsg:JSON.parse(data)}));
+            msg.on('data',(data)=>{
+                if(typeof data === 'string'){
+                    console.log({ServerMsg:JSON.parse(data)});
+                }
+            });
             if(callback)callback();
         })
     .on('error',(err)=>{

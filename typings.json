@@ -2,6 +2,7 @@
   "globalDependencies": {
     "gulp-livereload": "file:./typings/custom/gulp-livereload.d.ts",
     "gulp-pleeease": "file:typings/custom/gulp-pleeease.d.ts",
-    "gulp-pug": "file:./typings/custom/gulp-pug.d.ts"
+    "gulp-pug": "file:./typings/custom/gulp-pug.d.ts",
+    "gulp-sass": "file:./typings/custom/gulp-sass.d.ts"
   }
 }

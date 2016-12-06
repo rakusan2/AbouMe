@@ -32,6 +32,7 @@ const reloadOptions = {
 function onError(err) {
     console.log(err.message);
 }
+;
 let tsProject = ts.createProject(__dirname + '/tsconfig.json', tsOptions), isListening = false;
 function html(params) {
     gulp.src('src/pug/*.pug')
@@ -52,14 +53,14 @@ function css() {
 }
 function js() {
     gulp.src(['src/ts/*.ts', 'typings/globals/**/*.ts', 'typings/modules/**/*.ts'])
-        .pipe(ts(tsProject))
+        .pipe(tsProject())
         .on('error', onError).js
         .pipe(gulp.dest('docs/js'))
         .pipe(reload());
 }
 function listen() {
     if (isListening)
-        return;
+        return; // tslint:disable-line
     reload.listen(reloadOptions);
 }
 function watch() {

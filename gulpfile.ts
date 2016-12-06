@@ -55,7 +55,7 @@ function css(){
 }
 function js(){
     gulp.src(['src/ts/*.ts','typings/globals/**/*.ts', 'typings/modules/**/*.ts'])
-        .pipe(ts(tsProject))
+        .pipe(tsProject())
         .on('error',onError).js
         .pipe(gulp.dest('docs/js'))
         .pipe(reload());

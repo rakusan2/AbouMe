@@ -1,6 +1,11 @@
 //const activeKey = 'active';
 var hideKey = 'hide';
-var skils = [
+var skills = [
+    {
+        name: 'Go',
+        description: 'I have learned this just for trying out a new language which later became one of the languages that I used during the IEEEXtreme Programming competition',
+        date: 'Late September of 2016'
+    },
     {
         name: 'HTML through Pug',
         description: 'I have started using pug to decrease the the repetitive code creation and now I am also using it to add scripts that are only needed during testing',
@@ -50,9 +55,9 @@ var skils = [
 var input;
 window.onload = function (ev) {
     var sbody = document.getElementById('sbody'), sbodyFrag = document.createDocumentFragment();
-    for (var i = 0; i < skils.length; i++) {
-        skils[i].div = skilToCard(skils[i]);
-        sbodyFrag.appendChild(skils[i].div);
+    for (var i = 0; i < skills.length; i++) {
+        skills[i].div = skilToCard(skills[i]);
+        sbodyFrag.appendChild(skills[i].div);
     }
     sbody.innerHTML = "";
     sbody.appendChild(sbodyFrag);
@@ -93,8 +98,8 @@ function checkChangeClass(div, active) {
 }
 function search(ev) {
     var regSearch = new RegExp(input.textContent, 'i'), s;
-    for (var i = 0; i < skils.length; i++) {
-        s = skils[i];
+    for (var i = 0; i < skills.length; i++) {
+        s = skills[i];
         checkChangeClass(s.div, s.name.search(regSearch) >= 0 || (s.description && s.description.search(regSearch) >= 0));
     }
 }
