@@ -10,7 +10,7 @@
     "@types/express": "~4.0",
     "@types/gulp": "~3.8",
     "@types/gulp-changed": "~0.0",
-    "@types/node": "~6.0",
+    "@types/node": "~7.0",
     "@types/node-sass": "~3.10",
     "@types/pug": "~2.0",
     "gulp": "~3.9",
@@ -18,7 +18,7 @@
     "gulp-livereload": "~3.8",
     "gulp-pleeease": "~2.0",
     "gulp-pug": "~3.2",
-    "gulp-sass": "~3.0",
+    "gulp-sass": "~3.1",
     "gulp-typescript": "~3.1",
     "typescript": "~2.1"
   },
