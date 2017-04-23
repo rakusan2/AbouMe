@@ -10,7 +10,16 @@ html
             .skills
                 #input(autofocus contenteditable placeholder="Please Search though my skils" tabIndex=1)
                 #sbody
-                    div.error Please wait my skills are loading
+                    each val in skills
+                        div(tabindex="1")
+                            if val.name
+                                .name(data-type="name")=val.name
+                            if val.description
+                                .desc(data-type="description")=val.description
+                            if val.date
+                                .date(data-type="date")=val.date
+                    else
+                        div Sorry something went wrong in loading my skills
         if autoReloadS
             script!=autoReloadS
         script(src="js/main.js")

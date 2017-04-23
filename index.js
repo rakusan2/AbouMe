@@ -1,7 +1,8 @@
 "use strict";
-const displayIP_1 = require('./displayIP');
-const pushIP = require('./pushIP');
-const express = require('express');
+Object.defineProperty(exports, "__esModule", { value: true });
+const express = require("express");
+const displayIP_1 = require("./displayIP");
+const pushIP = require("./pushIP");
 let app = express();
 let ip = displayIP_1.default();
 const siteDir = __dirname + '/docs';

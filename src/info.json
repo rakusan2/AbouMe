@@ -1,0 +1,52 @@
+[
+    {
+        "name":"Go",
+        "description":"I have learned this just for trying out a new language which later became one of the languages that I used during the IEEEXtreme Programming competition",
+        "date":"Late September of 2016"
+    },
+    {
+        "name":"HTML through Pug",
+        "description":"I have started using pug to decrease the the repetitive code creation and now I am also using it to add scripts that are only needed during testing",
+        "date":"June of 2016"
+    },
+    {
+        "name":"CSS through SCSS",
+        "description":"SCSS enables me to nest my css code and use variables for repeated values",
+        "date":"June of 2016"
+    },
+    {
+        "name":"Typescript",
+        "description":"A superset of JavaScript which can be transpiled to older versions of JS while keeping me avare of properties I want in an object, types that the properties or parameters can use, spelling of a \"name\", and more",
+        "date":"June of 2016"
+    },
+    {
+        "name":"Vim",
+        "description":"This is currently my go to text editor in linux when working in the terminal",
+        "date":"October of 2015"
+    },
+    {
+        "name":"Git",
+        "description":"Originally learned to colaborate with the programming portion of my high schools robotics team",
+        "date":"January of 2015"
+    },
+    {
+        "name":"Java",
+        "description":"Used for programming an FRC robot for my schools robotics team",
+        "date":"October of 2013"
+    },
+    {
+        "name":"C#",
+        "description":"Learned for the purpose of competing in a regional highschool level programming competition butonly truly used to transfer data to an Arduino and solve a Pic-A-Pix puzzle",
+        "date":"July of 2012"
+    },
+    {
+        "name":"C",
+        "description":"I have been playing around with an Arduino since I was 15 years old and have taken a basic Programming course in University.",
+        "date":"December of 2011"
+    },
+    {
+        "name":"Turing",
+        "description":"First Programming language I have ever learned",
+        "date":"November of 2011"
+    }
+]

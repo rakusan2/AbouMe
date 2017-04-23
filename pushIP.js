@@ -1,6 +1,7 @@
 "use strict";
-const https = require('https');
-const fs = require('fs');
+Object.defineProperty(exports, "__esModule", { value: true });
+const https = require("https");
+const fs = require("fs");
 let auth, options;
 const pushException = {
     type: 'note',

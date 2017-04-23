@@ -1,12 +1,15 @@
 "use strict";
-const gulp = require('gulp');
-const sass = require('gulp-sass');
-const pug = require('gulp-pug');
-const ts = require('gulp-typescript');
-const reload = require('gulp-livereload');
-const pleeease = require('gulp-pleeease');
-const changed = require('gulp-changed');
-const ots = require('typescript');
+Object.defineProperty(exports, "__esModule", { value: true });
+const gulp = require("gulp");
+const sass = require("gulp-sass");
+const pug = require("gulp-pug");
+const ts = require("gulp-typescript");
+const reload = require("gulp-livereload");
+const pleeease = require("gulp-pleeease");
+const changed = require("gulp-changed");
+const ots = require("typescript");
+const fs = require("fs");
+let skills = fsJSONPromise('src/info.json');
 const pugParams = {
     doctype: 'html',
     pretty: true
@@ -63,27 +66,54 @@ function listen() {
         return; // tslint:disable-line
     reload.listen(reloadOptions);
 }
-function watch() {
+function watch(isTest) {
+    let htmlTag = (isTest ? 'testhtml' : 'html');
     listen();
-    gulp.watch('src/pug/*.pug', ['html']);
-    gulp.watch('src/scss/*.scss', ['css']);
-    gulp.watch('src/ts/*.ts', ['js']);
-}
-function testWatch() {
-    listen();
-    gulp.watch('src/pug/*.pug', ['testhtml']);
+    gulp.watch('src/info.json', () => {
+        skills = fsJSONPromise('src/info.json');
+        gulp.start([htmlTag]);
+    });
+    gulp.watch('src/pug/*.pug', [htmlTag]);
     gulp.watch('src/scss/*.scss', ['css']);
     gulp.watch('src/ts/*.ts', ['js']);
 }
 gulp.task('html', () => {
-    html(pugParams);
+    skills.then(s => {
+        if (!('locals' in pugParams))
+            pugParams.locals = {};
+        pugParams.locals.skills = s;
+        html(pugParams);
+    }).catch(a => {
+        console.error(a);
+        process.exit(1);
+    });
 });
 gulp.task('testhtml', () => {
-    html(pugTestParams);
+    skills.then(s => {
+        if (!('locals' in pugTestParams))
+            pugTestParams.locals = {};
+        pugTestParams.locals.skills = s;
+        html(pugTestParams);
+    }).catch(a => {
+        console.error(a);
+        process.exit(1);
+    });
 });
 gulp.task('css', css);
 gulp.task('js', js);
-gulp.task('watch', ['js', 'css', 'html'], watch);
-gulp.task('testWatch', testWatch);
+gulp.task('watch', ['js', 'css', 'html'], () => watch(false));
+gulp.task('testWatch', ['testComp']);
 gulp.task('default', ['js', 'css', 'html']);
-gulp.task('testComp', ['js', 'css', 'testhtml', 'testWatch']);
+gulp.task('testComp', ['js', 'css', 'testhtml'], () => watch(true));
+function fsJSONPromise(file) {
+    return new Promise((res, rej) => {
+        fs.readFile(file, 'utf8', (err, data) => {
+            if (err) {
+                rej(err);
+            }
+            else {
+                res(JSON.parse(data));
+            }
+        });
+    });
+}

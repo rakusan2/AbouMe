@@ -1,5 +1,6 @@
 "use strict";
-const os = require('os');
+Object.defineProperty(exports, "__esModule", { value: true });
+const os = require("os");
 let ss = new RegExp('Virtual');
 function getIP() {
     let interF = os.networkInterfaces(), ip = [];
@@ -12,5 +13,4 @@ function getIP() {
     });
     return ip;
 }
-Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = getIP;
