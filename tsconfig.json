@@ -11,8 +11,8 @@
     },
     "exclude": [
         "node_modules",
-        "src",
+        "src/",
         "typings/custom",
-        "docs"
+        "docs/"
     ]
 }
